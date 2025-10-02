@@ -35,7 +35,7 @@ load_or_install <- function(pkg, bioc = FALSE) {
 cran_packages <- c(
   "readxl", "ggplot2", "tidyverse", "dplyr",
   "viridis", "RColorBrewer", "ggpubr", "rstatix",
-  "plotly", "ggforce", "ggrepel", "DT", "shiny"
+  "plotly", "ggforce", "ggrepel", "DT", "shiny","colorspace"
 )
 
 
@@ -615,17 +615,18 @@ ggplot(merged_clinical, aes(x = age_at_diagnosis/365, fill = vital_status)) +
   scale_fill_viridis_d(option = "cividis") +
   theme_bw()
 
-n <- length(unique(merged_clinical$primary_diagnosis))
-mycols <- viridis(n, option = "cividis")
-
 merged_clinical %>%
   dplyr::count(primary_diagnosis) %>%
-  ggplot(aes(x = "", y = n, fill = primary_diagnosis)) +
+  ggplot(aes(x = reorder(primary_diagnosis, n), y = n, fill = primary_diagnosis)) +
   geom_col() +
-  coord_polar(theta = "y") +
-  labs(title = "Primary Diagnosis Distribution") +
-  theme_void() +
-  scale_fill_manual(values = mycols)
+  coord_flip() +
+  labs(
+    title = "Primary Diagnosis Distribution",
+    x = "Primary Diagnosis",
+    y = "Count"
+  ) +
+  scale_fill_viridis_d(option = "cividis") +
+  theme_minimal()
 
 ggplot(merged_clinical, aes(x = gender.x, y = age_at_diagnosis/365, fill = gender.x)) +
   geom_boxplot() +
@@ -1184,18 +1185,6 @@ ggplot(merged_clinical, aes(x = age_at_diagnosis/365, fill = vital_status)) +
        x = "Age (years)", y = "Number of Patients") +
   scale_fill_viridis_d(option = "cividis") +
   theme_bw()
-
-n <- length(unique(merged_clinical$primary_diagnosis))
-mycols <- viridis(n, option = "cividis")
-
-merged_clinical %>%
-  dplyr::count(primary_diagnosis) %>%
-  ggplot(aes(x = "", y = n, fill = primary_diagnosis)) +
-  geom_col() +
-  coord_polar(theta = "y") +
-  labs(title = "Primary Diagnosis Distribution") +
-  theme_void() +
-  scale_fill_manual(values = mycols)
 
 ggplot(merged_clinical, aes(x = gender.x, y = age_at_diagnosis/365, fill = gender.x)) +
   geom_boxplot() +
@@ -1756,18 +1745,6 @@ ggplot(merged_clinical, aes(x = age_at_diagnosis/365, fill = vital_status)) +
        x = "Age (years)", y = "Number of Patients") +
   scale_fill_viridis_d(option = "cividis") +
   theme_bw()
-
-n <- length(unique(merged_clinical$primary_diagnosis))
-mycols <- viridis(n, option = "cividis")
-
-merged_clinical %>%
-  dplyr::count(primary_diagnosis) %>%
-  ggplot(aes(x = "", y = n, fill = primary_diagnosis)) +
-  geom_col() +
-  coord_polar(theta = "y") +
-  labs(title = "Primary Diagnosis Distribution") +
-  theme_void() +
-  scale_fill_manual(values = mycols)
 
 ggplot(merged_clinical, aes(x = gender.x, y = age_at_diagnosis/365, fill = gender.x)) +
   geom_boxplot() +
@@ -2330,18 +2307,6 @@ ggplot(merged_clinical, aes(x = age_at_diagnosis/365, fill = vital_status)) +
   scale_fill_viridis_d(option = "cividis") +
   theme_bw()
 
-n <- length(unique(merged_clinical$primary_diagnosis))
-mycols <- viridis(n, option = "cividis")
-
-merged_clinical %>%
-  dplyr::count(primary_diagnosis) %>%
-  ggplot(aes(x = "", y = n, fill = primary_diagnosis)) +
-  geom_col() +
-  coord_polar(theta = "y") +
-  labs(title = "Primary Diagnosis Distribution") +
-  theme_void() +
-  scale_fill_manual(values = mycols)
-
 ggplot(merged_clinical, aes(x = gender.x, y = age_at_diagnosis/365, fill = gender.x)) +
   geom_boxplot() +
   labs(title = "Age at Diagnosis by Gender",
@@ -2903,18 +2868,6 @@ ggplot(merged_clinical, aes(x = age_at_diagnosis/365, fill = vital_status)) +
   scale_fill_viridis_d(option = "cividis") +
   theme_bw()
 
-n <- length(unique(merged_clinical$primary_diagnosis))
-mycols <- viridis(n, option = "cividis")
-
-merged_clinical %>%
-  dplyr::count(primary_diagnosis) %>%
-  ggplot(aes(x = "", y = n, fill = primary_diagnosis)) +
-  geom_col() +
-  coord_polar(theta = "y") +
-  labs(title = "Primary Diagnosis Distribution") +
-  theme_void() +
-  scale_fill_manual(values = mycols)
-
 ggplot(merged_clinical, aes(x = gender.x, y = age_at_diagnosis/365, fill = gender.x)) +
   geom_boxplot() +
   labs(title = "Age at Diagnosis by Gender",
@@ -3475,18 +3428,6 @@ ggplot(merged_clinical, aes(x = age_at_diagnosis/365, fill = vital_status)) +
        x = "Age (years)", y = "Number of Patients") +
   scale_fill_viridis_d(option = "cividis") +
   theme_bw()
-
-n <- length(unique(merged_clinical$primary_diagnosis))
-mycols <- viridis(n, option = "cividis")
-
-merged_clinical %>%
-  dplyr::count(primary_diagnosis) %>%
-  ggplot(aes(x = "", y = n, fill = primary_diagnosis)) +
-  geom_col() +
-  coord_polar(theta = "y") +
-  labs(title = "Primary Diagnosis Distribution") +
-  theme_void() +
-  scale_fill_manual(values = mycols)
 
 ggplot(merged_clinical, aes(x = gender.x, y = age_at_diagnosis/365, fill = gender.x)) +
   geom_boxplot() +
