@@ -28,9 +28,10 @@ The goal is to provide a transparent, fully reproducible workflow and interactiv
 
 The analysis is fully reproducible with [`renv`](https://rstudio.github.io/renv/).
 
-## Website
+## Analysis link
 
-[Access the website here](https://joeydufourd.github.io/TELS1-and-cancer/GDC-cancer-and-TELS1.html).
+[Access the analysis here](https://joeydufourd.github.io/Sarcomas-and-TELS1.html).
+[Don't forget to also check my website for other cool stuff](https://joeydufourd.github.io/).
 
 Clone the repository and restore the environment:
 
