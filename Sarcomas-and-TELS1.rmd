@@ -2,7 +2,7 @@
 title: "TELS1 and cancer (GDC data)"
 author: "Joey Dufourd"
 email: joey.dufourd@gmail.com
-date: 'Recreated the 12th September, 2025 (from 2021 analysis) (&nbsp;Last update on the `r paste(format(Sys.time(), "%d"), month.name[as.integer(format(Sys.time(), "%m"))], format(Sys.time(), "%Y"))` )'
+date: '`r paste("Recreated the 12th September 2025 (from 2021 analysis). Last update on", format(Sys.Date(), "%d %B %Y"))`'
 output:
     html_document:
         theme: cosmo
@@ -46,9 +46,9 @@ for (pkg in cran_packages) load_or_install(pkg, bioc = FALSE)
 for (pkg in bioc_packages) load_or_install(pkg, bioc = TRUE)
 
 ```
----
+
 [Wish to go back to index ?](https://joeydufourd.github.io/)
----
+
 Welcome to this large-scale RMarkdown re-analysis.
 For now, I’ve kept the code in its full form rather than refactoring into functions. This keeps the workflow transparent, though function-based simplification may be added later.
 The entire repository is fully reproducible via the 'renv.lock' file.
